@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Basamak Değerlendirme Sınav Sonucu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: #FFD700;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .result-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score-display {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #1a2a6c;
+        }
+        
+        .score-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .score-details h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        
+        .exam-result {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+        
+        .exam-result h4 {
+            color: #1a2a6c;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .exam-result .score {
+            font-weight: bold;
+            color: #b21f1f;
+        }
+        
+        .total-score {
+            background-color: #1a2a6c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .total-score h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .total-score .score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        .result-comment {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #1a2a6c;
+        }
+        
+        .result-comment h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .result-comment p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background: linear-gradient(to right, #1a2a6c, #3a5fc5);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, #0d1b4d, #2a4bbd);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #1a2a6c;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+            
+            .score-display {
+                font-size: 2.8rem;
+            }
+            
+            .total-score .score {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .score-display {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-award"></i>
+                <div>
+                    <h1>2. Basamak Değerlendirme Sınav Sonucu</h1>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="result-container">
+                <div class="score-display" id="total-score">0/14</div>
+                
+                <div class="score-details">
+                    <h3><i class="fas fa-chart-pie"></i> Puan Dağılımı</h3>
+                    
+                    <div class="exam-result">
+                        <h4><i class="fas fa-file-alt"></i> 1. Soru: Fonksiyon Nitel Özellikleri</h4>
+                        <p class="score" id="exam1-score">0/7</p>
+                    </div>
+                    
+                    <div class="exam-result">
+                        <h4><i class="fas fa-file-alt"></i> 2. Soru: Fonksiyon Nitel Özellikleri<</h4>
+                        <p class="score" id="exam2-score">0/8</p>
+                    </div>
+                    
+                    <div class="total-score">
+                        <h3><i class="fas fa-star"></i> Toplam Puan</h3>
+                        <p class="score" id="final-score">0/15</p>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+
+        </div>
+        
+        <footer>
+            <p>Fonksiyon Nitel Özellikleri Değerlendirme Sınavı</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // SessionStorage'dan puanları al
+            const exam1Score = parseInt(sessionStorage.getItem('sinav1') || '0');
+            const exam2Score = parseInt(sessionStorage.getItem('sinav2') || '0');
+            const totalScore = exam1Score + exam2Score;
+            
+            // Puanları göster
+            document.getElementById('exam1-score').textContent = `${exam1Score}/7`;
+            document.getElementById('exam2-score').textContent = `${exam2Score}/8`;
+            document.getElementById('final-score').textContent = `${totalScore}/15`;
+            document.getElementById('total-score').textContent = `${totalScore}/15`;
+            
+       		history.pushState(null, null, window.location.href);
+window.onpopstate = function(event) {
+    history.pushState(null, null, window.location.href);
+    window.location.href = "giris.html";
+};
+            
+
+        });
+    </script>
+</body>
+</html>

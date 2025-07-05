@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonksiyon Nitel Özellikleri Değerlendirme Sınavı</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            background: linear-gradient(to right, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .exam-info {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .exam-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #1a2a6c;
+            padding-bottom: 8px;
+        }
+        
+        .section h2 i {
+            color: #b21f1f;
+        }
+        
+        .section p {
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.7;
+        }
+        
+        .objectives {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #1a2a6c;
+            margin: 20px 0;
+        }
+        
+        .objectives h3 {
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .objectives ul {
+            padding-left: 25px;
+        }
+        
+        .objectives li {
+            margin-bottom: 10px;
+        }
+        
+        .rules {
+            background-color: #fff8e1;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        
+        .rules h3 {
+            color: #b21f1f;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .rules ul {
+            padding-left: 25px;
+        }
+        
+        .rules li {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .start-btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .start-btn {
+            background: linear-gradient(to right, #1a2a6c, #3a5fc5);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(26, 42, 108, 0.3);
+        }
+        
+        .start-btn:hover {
+            background: linear-gradient(to right, #0d1b4d, #2a4bbd);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(26, 42, 108, 0.4);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a2a6c;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .section h2 {
+                font-size: 1.2rem;
+            }
+            
+            .start-btn {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .logo i {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .exam-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section h2 {
+                font-size: 1.1rem;
+            }
+            
+            .start-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-function"></i>
+                <div>
+                    <h1>Fonksiyon Nitel Özellikleri Değerlendirme Sınavı</h1>
+                </div>
+            </div>
+            <div class="exam-info">
+                <span><i class="fas fa-layer-group"></i> 2. Basamak Değerlendirme</span>
+                <span><i class="fas fa-question-circle"></i> 2 Soru</span>
+                <span><i class="fas fa-star"></i> Toplam 15 Puan</span>
+            </div>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2><i class="fas fa-bullseye"></i> Sınavın Amacı</h2>
+                <p>Bu sınav, gerçek sayılarda tanımlı fonksiyonların nitel özelliklerini analiz etme becerinizi ölçmek için tasarlanmıştır. Sınavda, fonksiyonların tanım ve görüntü kümeleri, artan-azalan aralıkları, sıfır noktaları, bire bir ve örten olma özellikleri gibi temel kavramları grafik ve cebirsel temsiller üzerinden değerlendireceksiniz.</p>
+                
+
+            </div>
+            
+            <div class="section">
+                <h2><i class="fas fa-info-circle"></i> Sınav Hakkında</h2>
+                <p>Sınav 2 sorudan oluşmaktadır ve toplam 15 puan üzerinden değerlendirilecektir. İlk soru doğrusal bir fonksiyonun (y=2x-3) özelliklerini analiz etmenizi gerektirirken, ikinci soru karesel bir fonksiyonun (f(x)=1/4(x-1)²-5) niteliklerini incelemenizi isteyecektir.</p>
+                
+                <div class="rules">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Sınav Kuralları</h3>
+                    <ul>
+                        <li><strong>Tüm sorular cevaplanmalıdır.</strong> Eksik cevaplanan sorular puan alamaz.</li>
+                        <li>Cevaplarınızı kontrol ettikten sonra <strong>değiştirme şansınız olmayacaktır.</strong></li>
+                        <li>Her sorunun puan değeri soru kartında belirtilmiştir.</li>
+                        <li>Sınav süresince geri butonunu kullanamazsınız.</li>
+                        <li>İnteraktif grafikleri kullanarak fonksiyonları analiz edebilirsiniz.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="start-btn-container">
+                <button class="start-btn" id="start-exam">
+                    <i class="fas fa-play"></i> Sınava Başla
+                </button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Fonksiyon Nitel Özellikleri Değerlendirme Sınavı</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sınava başla butonu
+            const startBtn = document.getElementById('start-exam');
+            
+            startBtn.addEventListener('click', function() {
+                // Sınav aktif durumunu sessionStorage'a kaydet
+                sessionStorage.setItem('sinav_aktif', 'evet');
+                
+                // İlk sınav sayfasına yönlendir
+                window.location.href = "exam1.html";
+            });
+            
+            // Kullanıcıyı geri butonu ile bu sayfaya dönmesini engelle
+            history.pushState(null, null, location.href);
+            window.onpopstate = function(event) {
+                history.go(1);
+            };
+        });
+    </script>
+</body>
+</html>
