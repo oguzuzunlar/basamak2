@@ -158,7 +158,6 @@
             display: flex;
             justify-content: center;
             margin-top: 25px;
-            gap: 15px;
         }
         
         .btn {
@@ -182,34 +181,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
-        .btn-success {
-            background: linear-gradient(to right, #28a745, #218838);
-        }
-        
-        .btn-success:hover {
-            background: linear-gradient(to right, #218838, #1e7e34);
-        }
-        
-        .lms-status {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .lms-status.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .lms-status.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
         footer {
             text-align: center;
             padding: 15px;
@@ -229,10 +200,6 @@
             
             .total-score .score {
                 font-size: 2rem;
-            }
-            
-            .buttons {
-                flex-direction: column;
             }
         }
         
@@ -280,7 +247,7 @@
                     </div>
                     
                     <div class="exam-result">
-                        <h4><i class="fas fa-file-alt"></i> 2. Soru: Fonksiyon Nitel Özellikleri</h4>
+                        <h4><i class="fas fa-file-alt"></i> 2. Soru: Fonksiyon Nitel Özellikleri<</h4>
                         <p class="score" id="exam2-score">0/8</p>
                     </div>
                     
@@ -290,25 +257,10 @@
                     </div>
                 </div>
                 
-                <div class="result-comment">
-                    <h3><i class="fas fa-comment"></i> Değerlendirme</h3>
-                    <p>Tebrikler! Değerlendirme sınavını tamamladınız. Puanınız LMS sistemine otomatik olarak gönderilecektir.</p>
-                    <p>Sonucunuzu kaydetmek veya LMS'e manuel olarak göndermek için aşağıdaki butonları kullanabilirsiniz.</p>
-                </div>
-                
-                <div class="buttons">
-                    <button class="btn" id="save-btn">
-                        <i class="fas fa-download"></i> Sonucu Kaydet
-                    </button>
-                    <button class="btn btn-success" id="send-lms-btn">
-                        <i class="fas fa-paper-plane"></i> LMS'e Gönder
-                    </button>
-                </div>
-                
-                <div id="lms-status" class="lms-status">
-                    <!-- LMS gönderme durumu burada gösterilecek -->
-                </div>
+
             </div>
+            
+
         </div>
         
         <footer>
@@ -317,35 +269,6 @@
     </div>
     
     <script>
-        // LMS'e puanı gönderme fonksiyonu
-        function sendScoreToLMS(ogrenciPuani) {
-            // LMS'e gönderilecek JSON veri (15 üzerinden puanlama)
-            var result = {
-                score: {
-                    max: 15,
-                    min: 0,
-                    raw: ogrenciPuani,
-                    scaled: ogrenciPuani / 15
-                },
-                completion: true,
-                success: true,
-                duration: "PT4.95S"
-            };
-            
-            // LMS içindeki doğru iframe'i seç
-            var lmsWindow = window.parent.document.getElementById("frmApp-0")?.contentWindow;
-            
-            // LMS penceresi bulunduysa, onCompleted() fonksiyonunu çağır
-            if (lmsWindow?.onCompleted) {
-                console.log("📡 LMS'e veri gönderiyorum...");
-                lmsWindow.onCompleted(result);
-                return true;
-            } else {
-                console.error("❌ LMS'ye sinyal gönderilemedi!");
-                return false;
-            }
-        }
-        
         document.addEventListener('DOMContentLoaded', function() {
             // SessionStorage'dan puanları al
             const exam1Score = parseInt(sessionStorage.getItem('sinav1') || '0');
@@ -358,73 +281,13 @@
             document.getElementById('final-score').textContent = `${totalScore}/15`;
             document.getElementById('total-score').textContent = `${totalScore}/15`;
             
-            // Geri gitmeyi engelle
-            history.pushState(null, null, window.location.href);
-            window.onpopstate = function(event) {
-                history.pushState(null, null, window.location.href);
-                window.location.href = "giris.html";
-            };
+       		history.pushState(null, null, window.location.href);
+window.onpopstate = function(event) {
+    history.pushState(null, null, window.location.href);
+    window.location.href = "giris.html";
+};
             
-            // LMS'e gönder butonu için event listener
-            document.getElementById('send-lms-btn').addEventListener('click', function() {
-                const lmsStatus = document.getElementById('lms-status');
-                
-                // Puanı LMS'e gönder
-                const success = sendScoreToLMS(totalScore);
-                
-                if (success) {
-                    lmsStatus.className = 'lms-status success';
-                    lmsStatus.innerHTML = `
-                        <i class="fas fa-check-circle"></i> 
-                        Puan başarıyla LMS sistemine gönderildi!
-                    `;
-                } else {
-                    lmsStatus.className = 'lms-status error';
-                    lmsStatus.innerHTML = `
-                        <i class="fas fa-exclamation-triangle"></i> 
-                        LMS sistemine bağlantı kurulamadı. Lütfen daha sonra tekrar deneyin.
-                    `;
-                }
-            });
-            
-            // Sonucu kaydet butonu için event listener
-            document.getElementById('save-btn').addEventListener('click', function() {
-                // Sonuçları PDF olarak indirme simülasyonu
-                const lmsStatus = document.getElementById('lms-status');
-                lmsStatus.className = 'lms-status success';
-                lmsStatus.innerHTML = `
-                    <i class="fas fa-download"></i> 
-                    Sonuçlarınız PDF olarak indiriliyor...
-                `;
-                
-                // Gerçek bir uygulamada burada PDF oluşturma kodu olurdu
-                setTimeout(() => {
-                    lmsStatus.innerHTML = `
-                        <i class="fas fa-check-circle"></i> 
-                        Sonuçlarınız başarıyla indirildi!
-                    `;
-                }, 2000);
-            });
-            
-            // Sayfa yüklendiğinde otomatik olarak LMS'e gönder
-            setTimeout(() => {
-                const success = sendScoreToLMS(totalScore);
-                const lmsStatus = document.getElementById('lms-status');
-                
-                if (success) {
-                    lmsStatus.className = 'lms-status success';
-                    lmsStatus.innerHTML = `
-                        <i class="fas fa-check-circle"></i> 
-                        Puanınız otomatik olarak LMS sistemine gönderildi!
-                    `;
-                } else {
-                    lmsStatus.className = 'lms-status error';
-                    lmsStatus.innerHTML = `
-                        <i class="fas fa-exclamation-triangle"></i> 
-                        Otomatik gönderim başarısız oldu. Lütfen "LMS'e Gönder" butonunu kullanın.
-                    `;
-                }
-            }, 3000);
+
         });
     </script>
 </body>
