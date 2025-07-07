@@ -71,7 +71,14 @@
             font-size: 1.8rem;
             color: #FFD700;
         }
-        
+                .points-badge {
+            background: #b21f1f;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
         h1 {
             font-size: 1.5rem;
             margin-bottom: 5px;
@@ -769,7 +776,7 @@
             <div class="logo">
                 <i class="fas fa-function"></i>
                 <div>
-                    <h1>Fonksiyon Nitel Özellikleri Değerlendirme Testi</h1>
+                    <h1>Fonksiyonun Nitel Özellikleri Değerlendirme Testi</h1>
                 </div>
             </div>
             <div class="module-info">
@@ -831,7 +838,8 @@
             
             <!-- Fonksiyon Özellikleri Bölümü -->
             <div class="properties-section" id="properties-section">
-                <h3><i class="fas fa-tasks"></i> Fonksiyon Özellikleri Analizi <span class="points-badge">8 Puan</span></h3>
+ <h3><i class="fas fa-tasks"></i> Fonksiyonun Nitel Özellikleri  <span class="points-badge">8 Puan</span></h3>
+	
                 <p>Fonksiyonun nitel özelliklerini belirlemek için aşağıdaki soruları cevaplayın:</p>
                 
                 <div class="progress-container">
@@ -1092,7 +1100,7 @@ window.addEventListener('click', function(event) {
             const AXIS_COLOR = '#000';
             const GRID_COLOR = '#e0e0e0';
             const FUNCTION_COLOR = '#1a2a6c';
-            const VERTICAL_LINE_COLOR = '#d9534f';
+            const VERTICAL_LINE_COLOR = ' #FF0000 ';
             const HORIZONTAL_LINE_COLOR = '#4CAF50';
             const ENDPOINT_COLOR = '#000000';
             const VERTEX_COLOR = '#FF0000';
@@ -1251,7 +1259,7 @@ window.addEventListener('click', function(event) {
                 
                 // Axis titles
                 ctx.font = 'bold 16px Arial';
-                ctx.fillText('x', canvas.width - 20, originY + 30);
+                ctx.fillText('x', canvas.width - 20, originY - 30);
                 ctx.fillText('y', originX + 30, 20);
             }
             
@@ -1368,13 +1376,13 @@ window.addEventListener('click', function(event) {
                 
                 // Draw vertical line
                 ctx.strokeStyle = VERTICAL_LINE_COLOR;
-                ctx.lineWidth = 3;
+                ctx.lineWidth = 0;
                 ctx.setLineDash([5, 3]);
                 ctx.beginPath();
                 ctx.moveTo(pixelX, 0);
                 ctx.lineTo(pixelX, canvas.height);
-                ctx.stroke();
-                ctx.setLineDash([]);
+                //ctx.stroke();
+                //ctx.setLineDash([]);
                 
                 // Draw intersection point
                 ctx.fillStyle = VERTICAL_LINE_COLOR;
