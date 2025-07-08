@@ -280,11 +280,39 @@
             document.getElementById('exam2-score').textContent = `${exam2Score}/8`;
             document.getElementById('final-score').textContent = `${totalScore}/15`;
             document.getElementById('total-score').textContent = `${totalScore}/15`;
+	// LMS'e puanı gönderme fonksiyonu
+        function sendScoreToLMS(ogrenciPuani) {
+            // LMS'e gönderilecek JSON veri (15 üzerinden puanlama)
+            var result = {
+                score: {
+                    max: 15,
+                    min: 0,
+                    raw: ogrenciPuani,
+                    scaled: ogrenciPuani / 15
+                },
+                completion: true,
+                success: true,
+                duration: "PT4.95S"
+            };
+            
+            // LMS içindeki doğru iframe'i seç
+            var lmsWindow = window.parent.document.getElementById("frmApp-0")?.contentWindow;
+            
+            // LMS penceresi bulunduysa, onCompleted() fonksiyonunu çağır
+            if (lmsWindow?.onCompleted) {
+                console.log("📡 LMS'e veri gönderiyorum...");
+                lmsWindow.onCompleted(result);
+            } else {
+                console.error("❌ LMS'ye sinyal gönderilemedi!");
+            }
+        }
+	        // LMS'e toplam puanı gönder
+        sendScoreToLMS(totalScore);
             
        		history.pushState(null, null, window.location.href);
 window.onpopstate = function(event) {
     history.pushState(null, null, window.location.href);
-    window.location.href = "giris.html";
+    window.location.href = "index.html";
 };
             
 

@@ -17,7 +17,7 @@
         // Her sayfa açıldığında kontrol et
         if (sessionStorage.getItem('sinav_aktif') !== 'evet') {
             // Sınava izinsiz giriş => yönlendir
-            window.location.href = "giris.html"; // veya ana sayfa
+            window.location.href = "index.html"; // veya ana sayfa
         }
     </script>
 
@@ -1646,7 +1646,7 @@ window.addEventListener('click', function(event) {
 				history.pushState(null, null, window.location.href);
 window.onpopstate = function(event) {
     history.pushState(null, null, window.location.href);
-    window.location.href = "giris.html";
+    window.location.href = "index.html";
 };
             // Sınavı tamamla butonu (özellikler bölümü)
             nextPropertiesButton.addEventListener('click', showExamResult);
